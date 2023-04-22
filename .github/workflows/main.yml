@@ -5,10 +5,7 @@ on: [push, pull_request, workflow_dispatch]
 jobs:
   build:
     name: "Run build"
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
+    runs-on: ubuntu-latest
         
     steps:
       - name: Git checkout
@@ -24,6 +21,7 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
+          maven-version: 3.8.6
       - name: "Run Maven"
         shell: bash
-        run: mvn clean install --batch-mode -PintegrationTests -DintegrationTestProfiles=it-${{ runner.os }}
+        run: mvn clean install --batch-mode

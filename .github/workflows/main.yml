@@ -25,3 +25,8 @@ jobs:
       - name: "Run Maven"
         shell: bash
         run: mvn clean install --batch-mode
+      - name: Step 3 - Use the Upload Artifact GitHub Action
+        uses: actions/upload-artifact@v2
+        with: 
+          name: target
+          path: /home/runner/work/frontend-maven-plugin/frontend-maven-plugin/frontend-maven-plugin/target

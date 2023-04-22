@@ -5,8 +5,7 @@ on: [push, pull_request, workflow_dispatch]
 jobs:
   build:
     name: "Run build"
-    runs-on: ubuntu-latest
-        
+    runs-on: ubuntu-latest    
     steps:
       - name: Git checkout
         uses: actions/checkout@v2
@@ -25,7 +24,7 @@ jobs:
       - name: "Run Maven"
         shell: bash
         run: mvn clean install --batch-mode
-      - name: Step 3 - Use the Upload Artifact GitHub Action
+      - name: Use the Upload Artifact GitHub Action
         uses: actions/upload-artifact@v2
         with: 
           name: target
